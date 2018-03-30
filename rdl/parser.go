@@ -612,6 +612,7 @@ func (p *parser) parseUse() {
 		} else {
 			prefix := string(schema.Name + ".")
 			for _, t := range schema.Types {
+				p.addTypeAnnotation(t, "x_used_from", fname)
 				p.useType(p.registry, t, prefix)
 			}
 			p.registerIncludedFile(path)
